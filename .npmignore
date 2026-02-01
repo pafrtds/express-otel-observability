@@ -1,28 +1,33 @@
-# Source files (compiled to dist/)
+# Source files
 src/
+tsconfig.json
+tsconfig.build.json
+.eslintrc.js
+.editorconfig
 
 # Tests
 test/
 *.spec.ts
 *.test.ts
 jest.config.js
-
-# Config files
-.eslintrc.js
-.editorconfig
-tsconfig.json
-tsconfig.build.json
-
-# IDE
-.idea/
-.vscode/
-
-# Git
-.git/
-.gitignore
-
-# Misc
-.env*
-*.log
 coverage/
-tmp/
+
+# Development files
+.git/
+.github/
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Build artifacts
+*.tsbuildinfo
+
+# Garantir que dist/ seja incluído no tarball (não ignorar)
+!dist/
+
+# Other
+*.log
+.env*
+.DS_Store

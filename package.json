@@ -1,11 +1,19 @@
 {
   "name": "@pafrtds/express-otel-observability",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A comprehensive OpenTelemetry observability module for Express applications with automatic tracing, structured logging, metrics, and error handling",
   "author": "Anfitrião Prime",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "dist",
     "examples",
@@ -43,8 +51,10 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:watch": "tsc -p tsconfig.build.json --watch",
-    "clean": "rm -rf dist",
-    "prepublishOnly": "npm run clean && npm run build",
+    "clean": "rm -rf dist tsconfig.build.tsbuildinfo",
+    "verify:dist": "node -e \"const fs=require('fs'); const p=(f)=>fs.existsSync(f); if(!p('dist/index.js')||!p('dist/index.d.ts')){ console.error('ERRO: dist/index.js ou dist/index.d.ts não encontrados. Rode npm run build.'); process.exit(1); }\"",
+    "prepack": "npm run clean && npm run build && npm run verify:dist",
+    "prepublishOnly": "npm run prepack",
     "lint": "eslint \"src/**/*.ts\"",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "test": "jest",
