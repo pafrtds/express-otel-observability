@@ -1,0 +1,28 @@
+# Source files (compiled to dist/)
+src/
+
+# Tests
+test/
+*.spec.ts
+*.test.ts
+jest.config.js
+
+# Config files
+.eslintrc.js
+.editorconfig
+tsconfig.json
+tsconfig.build.json
+
+# IDE
+.idea/
+.vscode/
+
+# Git
+.git/
+.gitignore
+
+# Misc
+.env*
+*.log
+coverage/
+tmp/
